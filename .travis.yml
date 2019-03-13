@@ -3,4 +3,4 @@ language: shell
 # before_install:
 #   - CARGO_INCREMENTAL=1
 #   - RUSTFLAGS="-Z thinlto -C codegen-units=16"
-script: travis_wait 30 docker build -t windows .
+script: travis_wait 60 docker build -t windows .

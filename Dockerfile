@@ -21,11 +21,13 @@ RUN vs_buildtools.exe --quiet --wait --norestart --nocache `
  || IF "%ERRORLEVEL%"=="3010" EXIT 0
 
 
-SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
+# SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
 
 # RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 # RUN choco install -y rust
 # RUN choco install rustup --pre
+
+SHELL ["cmd", "/S", "/C"]
 
 ADD rustup-init.sh c:/temp/
 
