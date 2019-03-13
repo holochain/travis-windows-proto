@@ -1,6 +1,6 @@
 # escape=`
 
-FROM microsoft/windowsservercore
+FROM microsoft/windowsservercore:1803
 
 # Apply latest patch
 RUN powershell -Command `
