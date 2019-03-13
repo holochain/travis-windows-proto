@@ -19,7 +19,7 @@ RUN powershell -Command `
         Add-WindowsPackage -Online -PackagePath C:\patch\Windows10.0-KB4462917-x64.cab; `
         Remove-Item -Force -Recurse \patch
 
-# Download the Build Tools bootstrapper.
+# Download the Build Tools bootstrapper
 RUN powershell -Command `
     Invoke-WebRequest `
      -Uri "https://aka.ms/vs/15/release/vs_buildtools.exe" `
