@@ -1,2 +1,5 @@
-os: windows
-lang: rust
+jobs:
+  include:
+    - name: "windows test"
+      os: windows
+      language: rust
