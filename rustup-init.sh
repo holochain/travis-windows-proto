@@ -1,5 +1,5 @@
 #!/bin/bash
-set -v
+set -vx
 # Copyright 2016 The Rust Project Developers. See the COPYRIGHT
 # file at the top-level directory of this distribution and at
 # http://rust-lang.org/COPYRIGHT.
