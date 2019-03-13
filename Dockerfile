@@ -26,15 +26,9 @@ FROM microsoft/windowsservercore:1803
 # RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 # RUN choco install -y git.install
 
-# # Download the Build Tools bootstrapper
 RUN powershell -Command `
-    Invoke-WebRequest `
-     -Uri "https://win.rustup.rs/x86_64" `
-     -UseBasicParsing -OutFile rustup-init.exe;
+    curl -sSf https://build.travis-ci.com/files/rustup-init.sh | sh -s -- --default-toolchain=nightly-2019-01-24-x86_64-pc-windows-msvc -y
 
-https://win.rustup.rs/x86_64
-
-RUN rustup-init.sh -v --default-toolchain nightly-2019-01-24 -y;
 
 RUN rustc --version
 RUN rustup --version
