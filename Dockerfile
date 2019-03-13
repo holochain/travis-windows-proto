@@ -29,7 +29,7 @@ SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
 
 ADD rustup-init.sh c:/temp/
 
-RUN rustup-init.sh --default-toolchain=nightly-2019-01-24-x86_64-pc-windows-msvc -y
+RUN c:/temp/rustup-init.sh --default-toolchain=nightly-2019-01-24-x86_64-pc-windows-msvc -y
 
 RUN rustc --version
 RUN rustup --version
