@@ -1,9 +1,9 @@
-FROM mcr.microsoft.com/windows/servercore AS installer
+FROM mcr.microsoft.com/windows/servercore
 
-CMD curl -sSf https://build.travis-ci.com/files/rustup-init.sh | sh -s -- --default-toolchain=$TRAVIS_RUST_VERSION -y
+RUN curl -sSf https://build.travis-ci.com/files/rustup-init.sh | sh -s -- --default-toolchain=$TRAVIS_RUST_VERSION -y
 
-CMD rustc --version
+RUN rustc --version
 
-CMD rustup --version
+RUN rustup --version
 
-CMD cargo --version
+RUN cargo --version
