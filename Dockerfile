@@ -25,7 +25,7 @@ SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
 
 RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 RUN choco install -y rust
-RUN export PATH=${TRAVIS_HOME}/.cargo/bin:$PATH
+
 RUN rustc --version
 RUN rustup --version
 RUN cargo --version
