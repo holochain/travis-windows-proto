@@ -35,7 +35,7 @@ SHELL ["cmd", "/S", "/C"]
 
 WORKDIR c:\\temp
 
-ADD rustup-init.sh c:/temp/
+COPY rustup-init.sh c:/temp/
 
 RUN c:/temp/rustup-init.sh -v --default-toolchain nightly-2019-01-24 -y
 
