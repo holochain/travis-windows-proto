@@ -2,8 +2,6 @@
 
 FROM microsoft/windowsservercore:1803
 
-RUN winver
-
 # Apply latest patch
 RUN powershell -Command `
         $ErrorActionPreference = 'Stop'; `

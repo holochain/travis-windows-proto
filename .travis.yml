@@ -1,4 +1,5 @@
 os: windows
 language: shell
 script:
+- systeminfo /fo csv | ConvertFrom-Csv | select OS*, System*, Hotfix* | Format-List
 - docker build -t windows .
