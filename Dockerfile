@@ -1,6 +1,6 @@
 # escape=`
 
-FROM microsoft/windowsservercore:ltsc2016
+FROM microsoft/windowsservercore
 
 # Apply latest patch
 RUN powershell -Command `
