@@ -27,11 +27,7 @@ RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.or
 RUN choco install -y git.install
 
 RUN powershell -Command `
-    Invoke-WebRequest `
-     -Uri "https://build.travis-ci.com/files/rustup-init.sh" `
-     -UseBasicParsing -OutFile rustup-init.sh;
-
-RUN bash rustup-init.sh --default-toolchain=nightly -y
+     curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly-2019-01-24 -y;
 
 RUN rustc --version
 RUN rustup --version
