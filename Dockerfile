@@ -33,7 +33,8 @@ RUN powershell -Command `
      -Uri "https://build.travis-ci.com/files/rustup-init.sh" `
      -UseBasicParsing -OutFile rustup-init.sh;
 
-RUN sh rustup-init.sh -v --default-toolchain nightly-2019-01-24 -y
+RUN powershell -Command `
+     sh rustup-init.sh -v --default-toolchain nightly-2019-01-24 -y;
 
 RUN rustc --version
 RUN rustup --version
