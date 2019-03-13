@@ -1,4 +1,4 @@
 os: windows
 language: shell
 script:
-- docker ps
+- docker build -t windows .
