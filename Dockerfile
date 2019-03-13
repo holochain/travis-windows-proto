@@ -24,8 +24,14 @@ RUN vs_buildtools.exe --quiet --wait --norestart --nocache `
 SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
 
 RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-RUN choco install -y git.install rust
-RUN choco install rustup --pre
+RUN choco install -y git.install
+
+RUN powershell -Command `
+    Invoke-WebRequest `
+     -Uri "https://build.travis-ci.com/files/rustup-init.sh" `
+     -UseBasicParsing -OutFile rustup-init.sh;
+
+RUN bash rustup-init.sh
 
 RUN rustc --version
 RUN rustup --version
