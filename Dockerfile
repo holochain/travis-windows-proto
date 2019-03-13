@@ -28,7 +28,10 @@ FROM microsoft/windowsservercore:1803
 
 SHELL ["cmd", "/S", "/C"]
 
-ADD rustup-init.sh rustup-init.sh
+RUN powershell -Command `
+    Invoke-WebRequest `
+     -Uri "https://build.travis-ci.com/files/rustup-init.sh" `
+     -UseBasicParsing -OutFile rustup-init.sh;
 
 RUN rustup-init.sh --default-toolchain nightly-2019-01-24 -y
 
