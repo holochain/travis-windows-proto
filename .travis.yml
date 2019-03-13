@@ -1,5 +1,3 @@
-jobs:
-  include:
-    - name: "windows test"
-      os: windows
-      language: rust
+os: windows
+script:
+- docker ps
