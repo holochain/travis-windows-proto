@@ -13,15 +13,15 @@ RUN powershell -Command `
 SHELL ["cmd", "/S", "/C"]
 
 # Install Build Tools excluding workloads and components with known issues.
-# RUN vs_buildtools.exe --quiet --wait --norestart --nocache `
-#     --installPath C:\BuildTools `
-#     --add "Microsoft.VisualStudio.Workload.NativeDesktop" `
-#     --add "Microsoft.VisualStudio.Component.Windows10SDK.10240" `
-#     --add "Microsoft.VisualStudio.Workload.NativeGame" `
-#  || IF "%ERRORLEVEL%"=="3010" EXIT 0
+RUN vs_buildtools.exe --quiet --wait --norestart --nocache `
+    --installPath C:\BuildTools `
+    --add "Microsoft.VisualStudio.Workload.NativeDesktop" `
+    --add "Microsoft.VisualStudio.Component.Windows10SDK.10240" `
+    --add "Microsoft.VisualStudio.Workload.NativeGame" `
+ || IF "%ERRORLEVEL%"=="3010" EXIT 0
 
 
-# SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
+SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
 
 RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 RUN choco install -y git.install
