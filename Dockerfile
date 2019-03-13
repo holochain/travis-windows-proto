@@ -26,8 +26,11 @@ SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
 RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 RUN choco install -y git.install
 
-RUN powershell -Command `
-     curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly-2019-01-24 -y;
+SHELL ["cmd", "/S", "/C"]
+
+ADD rustup-init.sh rustup-init.sh
+
+RUN rustup-init.sh --default-toolchain nightly-2019-01-24 -y
 
 RUN rustc --version
 RUN rustup --version
