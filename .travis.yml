@@ -4,5 +4,6 @@ language: shell
 #   - CARGO_INCREMENTAL=1
 #   - RUSTFLAGS="-Z thinlto -C codegen-units=16"
 script:
- - docker version 
+ - docker version
  - docker build -t windows .
+ - docker push holochain/travis-windows-proto:windows
