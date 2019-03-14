@@ -1,7 +1,7 @@
 # escape=`
 # https://github.com/carlin-q-scott/docker-mozbuild/blob/520882cc590b8d386ea30447c92d9ab15b69fe1b/Dockerfile
 
-FROM microsoft/windowsservercore:1803
+FROM microsoft/nanoserver:1803
 
 # Download the Build Tools bootstrapper
 RUN powershell -Command `
