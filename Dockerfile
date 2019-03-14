@@ -40,6 +40,8 @@ ENV RUST_VERSION nightly-2019-01-24
 ENV TARGET x86_64-pc-windows-msvc
 ENV WASM_TARGET wasm32-unknown-unknown
 
+
+RUN echo %USERPROFILE%
 RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
 RUN rustup-init.exe -y --default-host %TARGET% --default-toolchain %RUST_VERSION%
 RUN setx path '%path%;%USERPROFILE%\.cargo\bin'
