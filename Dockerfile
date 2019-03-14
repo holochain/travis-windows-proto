@@ -27,12 +27,15 @@ FROM microsoft/windowsservercore:1803
 # RUN choco install -y rust
 # RUN choco install rustup --pre
 
-SHELL ["cmd", "/S", "/C"]
+# SHELL ["cmd", "/S", "/C"]
 
-ADD rustup-init.sh c:/temp/
+# ADD rustup-init.sh c:/temp/
 
-RUN sh c:/temp/rustup-init.sh
+# RUN sh c:/temp/rustup-init.sh
 
-RUN rustc --version
-RUN rustup --version
-RUN cargo --version
+# RUN rustc --version
+# RUN rustup --version
+# RUN cargo --version
+
+RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
+RUN rustup-init.exe -y
