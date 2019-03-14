@@ -3,4 +3,6 @@ language: shell
 # before_install:
 #   - CARGO_INCREMENTAL=1
 #   - RUSTFLAGS="-Z thinlto -C codegen-units=16"
-script: docker build -t windows .
+script:
+ - docker version 
+ - docker build -t windows .

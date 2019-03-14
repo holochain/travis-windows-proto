@@ -39,3 +39,4 @@ FROM microsoft/windowsservercore:1803
 
 RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
 RUN rustup-init.exe -y
+CMD echo "done!"
