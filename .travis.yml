@@ -4,11 +4,10 @@ language: shell
 # https://travis-ci.community/t/current-known-issues-please-read-this-before-posting-a-new-topic/264/10
 filter_secrets: false
 script:
-- docker version
- # https://stackoverflow.com/questions/51489359/docker-using-password-via-the-cli-is-insecure-use-password-stdin
-- echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USER --password-stdin
 - docker build -t windows .
-- docker push windows:latest
+# https://stackoverflow.com/questions/51489359/docker-using-password-via-the-cli-is-insecure-use-password-stdin
+- echo "$DOCKER_PASSWORD" | docker login https://hub.docker.com -u $DOCKER_USER --password-stdin
+- docker push windows
 env:
   global:
   - secure: hkgmWzQTIenJghfTf/3ILiiDEk8GRa8fq8eJKIkjYSQjhrBrhRoH74m7EU+8aihRIodQYR4etoJSaR0qqRQ4UOGXT2xWXEWq84MJFcjx6ci2ILFaEvYPDWXY6BnQA69KBCEqkPjZRuIq/MeBRdY7zIYEq9kkH9dgnKGz1IXxOfn+zVtPcrc4V1jUOmdzoApDhW4fFINrifIz1fWPZ50rwiTL94BwJ0a0riRQF55AY3ZolTlylr9UwoApku4mUtYk7eqWMipuHKFXHSY/nuArRrHQzJQmfxkbCYp4ogwAclWT/TgewZcVmlToNv+ygcyG40VAXrWXiuYE0uxA1FciXayzTz6HuubpD1VT0ewoLB+Oipvy+pWSv27y6lAZjXSQSol6XIzE2OaI7KFZOJJ4MJqFZKiHAZasfNBLFrekgp4m0MbF3ziciOki284ZgPrL8kAVHl2YKTF5kFFSKagfrlHmK13P/vMBUWQIljG32sFQy9Oz9OOX6m/34j57FqLz2JlR0eJzBePqZOEKhlsku2XEBl8HGiC3fAydj4DUipM9kIbmb/s+CzjWbxVC0b5E+hWFNTCt/csLV3ZpUFcNjpDywXliCS6JZSVZlBX26rCK+kVQNjHLlK5o5ea7ahM81BK57KWL9AkeKhGLXh9VlCBdRT4O1UWwmFzhEFqYGvE=
