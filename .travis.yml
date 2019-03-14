@@ -5,8 +5,8 @@ language: shell
 filter_secrets: false
 script:
 - docker version
-- docker build -t windows .
 - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+- docker build -t windows .
 - docker push holochain/travis-windows-proto:windows
 env:
   global:
