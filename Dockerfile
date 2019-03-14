@@ -30,10 +30,10 @@ FROM microsoft/windowsservercore:1803
 # SHELL ["cmd", "/S", "/C"]
 
 
-# ENV RUST_VERSION nightly-2019-01-24
-# ENV TARGET x86_64-pc-windows-msvc
-# ENV WASM_TARGET wasm32-unknown-unknown
+ENV RUST_VERSION nightly-2019-01-24
+ENV TARGET x86_64-pc-windows-msvc
+ENV WASM_TARGET wasm32-unknown-unknown
 
-# RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
-# RUN rustup-init.exe -y --default-host %TARGET% --default-toolchain %RUST_VERSION%
-# ENV PATH %PATH%;%USERPROFILE%\.cargo\bin
+RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
+RUN rustup-init.exe -y --default-host %TARGET% --default-toolchain %RUST_VERSION%
+ENV PATH %PATH%;%USERPROFILE%\.cargo\bin
