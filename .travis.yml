@@ -6,7 +6,7 @@ filter_secrets: false
 script:
 - docker build -t windows .
 # https://stackoverflow.com/questions/51489359/docker-using-password-via-the-cli-is-insecure-use-password-stdin
-- echo "$DOCKER_PASSWORD" | docker login https://hub.docker.com -u $DOCKER_USER --password-stdin
+- echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
 - docker tag local-image:windows holochain/travis-windows-proto:windows
 - docker push windows
 env:
