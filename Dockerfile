@@ -42,7 +42,7 @@ ENV WASM_TARGET wasm32-unknown-unknown
 
 RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
 RUN rustup-init.exe -y --default-host %TARGET% --default-toolchain %RUST_VERSION%
-ENV PATH %PATH%;%USERPROFILE%\.cargo\bin
+RUN setx path '%path%;%USERPROFILE%\.cargo\bin'
 
 RUN rustc --version
 RUN rustup --version
