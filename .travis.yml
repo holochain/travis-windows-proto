@@ -1,5 +1,8 @@
 os: windows
 language: shell
+# hurrrrrrrrrr
+# https://travis-ci.community/t/current-known-issues-please-read-this-before-posting-a-new-topic/264/10
+filter_secrets: false
 script:
 - docker version
 - docker build -t windows .
