@@ -48,8 +48,13 @@ RUN setx path '%path%;%ALLUSERSPROFILE%\.cargo\bin'
 RUN @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 RUN choco install -y git.install nodist
 
-RUN RUN choco install nodist & `
+RUN choco install nodist & `
   NODE_PATH="/c/Program Files (x86)\Nodist\bin\node_modules;$NODE_PATH" & `
   PATH="$PATH:/c/Program Files (x86)/Nodist/bin"
 
-RUN nodist + 5 && nodist global 5
+RUN rustc --version
+RUN rustup --version
+RUN cargo --version
+RUN git --version
+RUN node --version
+RUN npm --version
