@@ -37,20 +37,18 @@ RUN C:\TEMP\vs_buildtools.exe --quiet --wait --norestart --nocache `
 
 SHELL ["cmd", "/S", "/C"]
 
-
 ENV RUST_VERSION nightly-2019-01-24
 ENV TARGET x86_64-pc-windows-msvc
 ENV WASM_TARGET wasm32-unknown-unknown
 
 RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
 RUN rustup-init.exe -y --default-host %TARGET% --default-toolchain %RUST_VERSION%
-RUN setx /M PATH "%PATH%;%USERPROFILE%\.cargo\bin"
+RUN setx path '%path%;%ALLUSERSPROFILE%\.cargo\bin'
+
+RUN @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+RUN choco install -y git.install
 
 RUN rustc --version
 RUN rustup --version
 RUN cargo --version
-
-SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
-
-RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-RUN choco install -y git.install
+RUN git --version
