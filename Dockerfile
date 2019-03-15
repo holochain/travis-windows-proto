@@ -30,11 +30,10 @@ RUN C:\TEMP\vs_buildtools.exe --quiet --wait --norestart --nocache `
     --installPath C:\BuildTools
 
 
-# SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
+SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
 
-# RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-# RUN choco install -y rust
-# RUN choco install rustup --pre
+RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+RUN choco install -y git.install
 
 # TO DO
 # start FROM microsoft/windowsservercore
