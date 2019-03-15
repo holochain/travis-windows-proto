@@ -14,12 +14,20 @@ SHELL ["cmd", "/S", "/C"]
 
 # Install Build Tools excluding workloads and components with known issues.
 ADD https://aka.ms/vs/15/release/vs_buildtools.exe C:\TEMP\vs_buildtools.exe
-RUN C:\TEMP\Install.cmd C:\TEMP\vs_buildtools.exe --quiet --wait --norestart --nocache `
-    --installPath C:\BuildTools `
-    --channelUri C:\TEMP\VisualStudio.chman `
-    --installChannelUri C:\TEMP\VisualStudio.chman `
-    --all `
- || IF "%ERRORLEVEL%"=="3010" EXIT 0
+
+# https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2017
+RUN C:\TEMP\vs_buildtools.exe --quiet --wait --norestart --nocache `
+    --add Microsoft.VisualStudio.Workload.VCTools `
+    --add Microsoft.VisualStudio.Component.Windows10SDK.17763 `
+    --add Microsoft.VisualStudio.Component.VC.CMake.Project `
+    --add Microsoft.VisualStudio.Component.VSSDKBuildTools `
+    --add Microsoft.VisualStudio.Component.VC.ATL `
+    --add Microsoft.Net.Component.4.6.1.SDK `
+    --remove Microsoft.VisualStudio.Component.Windows10SDK.10240 `
+    --remove Microsoft.VisualStudio.Component.Windows10SDK.10586 `
+    --remove Microsoft.VisualStudio.Component.Windows10SDK.14393 `
+    --remove Microsoft.VisualStudio.Component.Windows81SDK `
+    --installPath C:\BuildTools
 
 
 # SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
