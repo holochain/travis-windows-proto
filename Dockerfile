@@ -52,8 +52,4 @@ RUN RUN choco install nodist & `
   NODE_PATH="/c/Program Files (x86)\Nodist\bin\node_modules;$NODE_PATH" & `
   PATH="$PATH:/c/Program Files (x86)/Nodist/bin"
 
-RUN rustc --version
-RUN rustup --version
-RUN cargo --version
-RUN git --version
-RUN npm --version
+RUN nodist + 5 && nodist global 5
