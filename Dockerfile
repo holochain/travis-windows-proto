@@ -49,12 +49,12 @@ RUN @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -I
 RUN choco install -y git.install nodist
 
 RUN choco install nodist & `
-  nodist + 10 & `
-  nodist global 10 `
-  nodist npm + 6 & `
-  nodist npm global 6 & `
-  NODE_PATH="/c/Program Files (x86)\Nodist\bin\node_modules;$NODE_PATH" & `
-  PATH="$PATH:/c/Program Files (x86)/Nodist/bin"
+    nodist + 10 & `
+    nodist global 10 & `
+    nodist npm + 6 & `
+    nodist npm global 6 & `
+    NODE_PATH="/c/Program Files (x86)\Nodist\bin\node_modules;$NODE_PATH" & `
+    PATH="$PATH:/c/Program Files (x86)/Nodist/bin"
 
 RUN rustc --version & `
     rustup --version & `
