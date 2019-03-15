@@ -29,12 +29,6 @@ RUN C:\TEMP\vs_buildtools.exe --quiet --wait --norestart --nocache `
     --remove Microsoft.VisualStudio.Component.Windows81SDK `
     --installPath C:\BuildTools
 
-
-SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
-
-RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-RUN choco install -y git.install
-
 # TO DO
 # start FROM microsoft/windowsservercore
 # use all powershell commands you want to prepare your image
@@ -50,8 +44,13 @@ ENV WASM_TARGET wasm32-unknown-unknown
 
 RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
 RUN rustup-init.exe -y --default-host %TARGET% --default-toolchain %RUST_VERSION%
-RUN setx path '%path%;%USERPROFILE%\.cargo\bin'
+RUN setx /M PATH "%PATH%;%USERPROFILE%\.cargo\bin"
 
 RUN rustc --version
 RUN rustup --version
 RUN cargo --version
+
+SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
+
+RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+RUN choco install -y git.install
