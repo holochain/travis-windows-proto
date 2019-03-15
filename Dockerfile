@@ -13,11 +13,12 @@ RUN powershell -Command `
 SHELL ["cmd", "/S", "/C"]
 
 # Install Build Tools excluding workloads and components with known issues.
-RUN vs_buildtools.exe --quiet --wait --norestart --nocache `
+ADD https://aka.ms/vs/15/release/vs_buildtools.exe C:\TEMP\vs_buildtools.exe
+RUN C:\TEMP\Install.cmd C:\TEMP\vs_buildtools.exe --quiet --wait --norestart --nocache `
     --installPath C:\BuildTools `
-    --add "Microsoft.VisualStudio.Workload.NativeDesktop" `
-    --add "Microsoft.VisualStudio.Component.Windows10SDK.10240" `
-    --add "Microsoft.VisualStudio.Workload.NativeGame" `
+    --channelUri C:\TEMP\VisualStudio.chman `
+    --installChannelUri C:\TEMP\VisualStudio.chman `
+    --all `
  || IF "%ERRORLEVEL%"=="3010" EXIT 0
 
 
@@ -40,8 +41,6 @@ ENV RUST_VERSION nightly-2019-01-24
 ENV TARGET x86_64-pc-windows-msvc
 ENV WASM_TARGET wasm32-unknown-unknown
 
-
-RUN echo %USERPROFILE%
 RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
 RUN rustup-init.exe -y --default-host %TARGET% --default-toolchain %RUST_VERSION%
 RUN setx path '%path%;%USERPROFILE%\.cargo\bin'
