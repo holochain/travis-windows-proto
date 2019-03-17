@@ -1,0 +1,8 @@
+# escape=`
+# https://github.com/carlin-q-scott/docker-mozbuild/blob/520882cc590b8d386ea30447c92d9ab15b69fe1b/Dockerfile
+
+FROM microsoft/windowsservercore:1803
+
+ENV RUST_VERSION nightly-2019-01-24
+ENV TARGET x86_64-pc-windows-msvc
+ENV WASM_TARGET wasm32-unknown-unknown

@@ -1,0 +1,1 @@
+FROM holochain/travis-windows-proto:windows.01.build-tools
