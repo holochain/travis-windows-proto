@@ -2,17 +2,8 @@
 
 
 
-# TO DO
-# start FROM microsoft/windowsservercore
-# use all powershell commands you want to prepare your image
-# use a second FROM microsoft/nanoserver
-# copy what you need from the first stage into your final stage
 
-SHELL ["cmd", "/S", "/C"]
 
-RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
-RUN rustup-init.exe -y --default-host %TARGET% --default-toolchain %RUST_VERSION%
-RUN setx path '%path%;%ALLUSERSPROFILE%\.cargo\bin'
 
 RUN @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 RUN choco install -y git.install nodist

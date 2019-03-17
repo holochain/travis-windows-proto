@@ -3,6 +3,12 @@
 
 FROM microsoft/windowsservercore:1803
 
+# TO DO
+# start FROM microsoft/windowsservercore
+# use all powershell commands you want to prepare your image
+# use a second FROM microsoft/nanoserver
+# copy what you need from the first stage into your final stage
+
 ENV RUST_VERSION nightly-2019-01-24
 ENV TARGET x86_64-pc-windows-msvc
 ENV WASM_TARGET wasm32-unknown-unknown
