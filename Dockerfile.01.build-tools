@@ -3,8 +3,8 @@ FROM holochain/travis-windows-proto:windows..start
 # Download the Build Tools bootstrapper
 RUN powershell -Command `
     Invoke-WebRequest `
-    -Uri "https://aka.ms/vs/15/release/vs_buildtools.exe" `
-    -UseBasicParsing -OutFile vs_buildtools.exe
+     -Uri "https://aka.ms/vs/15/release/vs_buildtools.exe" `
+     -UseBasicParsing -OutFile vs_buildtools.exe
 
 # # Restore the default Windows shell for correct batch processing below.
 # SHELL ["cmd", "/S", "/C"]
