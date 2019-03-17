@@ -16,7 +16,7 @@ env:
 
 jobs:
  include:
-  - stage: docker.start
+  # - stage: docker.start
     - script:
      - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
      - docker build -f Dockerfile..start -t holochain/travis-windows-proto:windows..start .
