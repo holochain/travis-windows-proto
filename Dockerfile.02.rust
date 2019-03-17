@@ -1,5 +1,7 @@
 # escape=`
 
+FROM holochain/travis-windows-proto:windows.01.build-tools
+
 SHELL ["cmd", "/S", "/C"]
 
 RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
