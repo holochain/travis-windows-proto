@@ -3,6 +3,9 @@
 
 FROM microsoft/windowsservercore:1803
 
+# Restore the default Windows shell for correct batch processing below.
+SHELL ["cmd", "/S", "/C"]
+
 # TO DO
 # start FROM microsoft/windowsservercore
 # use all powershell commands you want to prepare your image

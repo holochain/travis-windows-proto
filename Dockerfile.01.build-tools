@@ -8,9 +8,6 @@ RUN powershell -Command `
     -Uri "https://aka.ms/vs/15/release/vs_buildtools.exe" `
     -UseBasicParsing -OutFile vs_buildtools.exe;
 
-# Restore the default Windows shell for correct batch processing below.
-SHELL ["cmd", "/S", "/C"]
-
 # Install Build Tools excluding workloads and components with known issues.
 ADD https://aka.ms/vs/15/release/vs_buildtools.exe C:\TEMP\vs_buildtools.exe
 
