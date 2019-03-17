@@ -2,7 +2,7 @@
 
 FROM holochain/travis-windows-proto:windows.02.rust
 
-RUN @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" `
+RUN powershell `
     -NoProfile `
     -InputFormat None `
     -ExecutionPolicy Bypass `
