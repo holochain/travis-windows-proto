@@ -1,1 +1,1 @@
-FROM holochain/travis-windows-proto:windows.01.build-tools
+FROM holochain/travis-windows-proto:windows.04.nodist
