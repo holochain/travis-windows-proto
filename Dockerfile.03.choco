@@ -9,4 +9,4 @@ RUN @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" `
     -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
 
 ENV PATH "${PATH};%ALLUSERSPROFILE%\chocolatey\bin"
-RUN choco --help
+RUN choco --version
