@@ -5,7 +5,11 @@ FROM holochain/travis-windows-proto:windows.01.build-tools
 SHELL ["cmd", "/S", "/C"]
 
 RUN curl -sSf -o rustup-init.exe https://win.rustup.rs/
+
 RUN rustup-init.exe -y --default-host %TARGET% --default-toolchain %RUST_VERSION%
+
 RUN setx path '%path%;%ALLUSERSPROFILE%\.cargo\bin'
 
 RUN cargo --version
+RUN rustc --version
+RUN rustup --version

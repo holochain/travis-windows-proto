@@ -8,7 +8,6 @@ RUN @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" `
     -ExecutionPolicy Bypass `
     -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
 
-RUN echo %path%
 RUN setx path '%path%;%ALLUSERSPROFILE%\chocolatey\bin'
-RUN echo %path%
+
 RUN choco --version
