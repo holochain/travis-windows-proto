@@ -1,3 +1,5 @@
+# escape=`
+
 FROM holochain/travis-windows-proto:windows..start
 
 # Download the Build Tools bootstrapper
