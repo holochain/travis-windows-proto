@@ -25,7 +25,7 @@ jobs:
     script:
      - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
      - docker pull holochain/travis-windows-proto:windows..start
-     - docker build -f Dockerfile..start -t holochain/travis-windows-proto:windows.01.build-tools .
+     - docker build -f Dockerfile.01.build-tools -t holochain/travis-windows-proto:windows.01.build-tools .
      - docker push holochain/travis-windows-proto:windows.01.build-tools
   - stage: docker.end
     script:
