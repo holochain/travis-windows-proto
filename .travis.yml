@@ -16,45 +16,45 @@ env:
 
 jobs:
  include:
-   - stage: docker.start
-     - script:
-       - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
-       - docker pull microsoft/windowsservercore:1803
-       - docker build --cache-from microsoft/windowsservercore:1803 -f Dockerfile..start -t holochain/travis-windows-proto:windows..start .
-       - docker push holochain/travis-windows-proto:windows..start
+  - stage: docker.start
+    script:
+      - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
+      - docker pull microsoft/windowsservercore:1803
+      - docker build --cache-from microsoft/windowsservercore:1803 -f Dockerfile..start -t holochain/travis-windows-proto:windows..start .
+      - docker push holochain/travis-windows-proto:windows..start
 
-   - stage: docker.01
-     - script:
-       - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
-       - docker pull holochain/travis-windows-proto:windows..start
-       - docker build --cache-from holochain/travis-windows-proto:windows..start -f Dockerfile.01.build-tools -t holochain/travis-windows-proto:windows.01.build-tools .
-       - docker push holochain/travis-windows-proto:windows.01.build-tools
+  - stage: docker.01
+    script:
+      - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
+      - docker pull holochain/travis-windows-proto:windows..start
+      - docker build --cache-from holochain/travis-windows-proto:windows..start -f Dockerfile.01.build-tools -t holochain/travis-windows-proto:windows.01.build-tools .
+      - docker push holochain/travis-windows-proto:windows.01.build-tools
 
-   - stage: docker.02
-     - script:
-       - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
-       - docker pull holochain/travis-windows-proto:windows.01.build-tools
-       - docker build --cache-from holochain/travis-windows-proto:windows.01.build-tools -f Dockerfile.02.rust -t holochain/travis-windows-proto:windows.02.rust .
-       - docker push holochain/travis-windows-proto:windows.02.rust
+  - stage: docker.02
+    script:
+      - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
+      - docker pull holochain/travis-windows-proto:windows.01.build-tools
+      - docker build --cache-from holochain/travis-windows-proto:windows.01.build-tools -f Dockerfile.02.rust -t holochain/travis-windows-proto:windows.02.rust .
+      - docker push holochain/travis-windows-proto:windows.02.rust
 
-   - stage: docker.03
-     - script:
-       - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
-       - docker pull holochain/travis-windows-proto:windows.02.rust
-       - docker build --cache-from holochain/travis-windows-proto:windows.02.rust -f Dockerfile.03.choco -t holochain/travis-windows-proto:windows.03.choco .
-       - docker push holochain/travis-windows-proto:windows.03.choco
+  - stage: docker.03
+    script:
+      - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
+      - docker pull holochain/travis-windows-proto:windows.02.rust
+      - docker build --cache-from holochain/travis-windows-proto:windows.02.rust -f Dockerfile.03.choco -t holochain/travis-windows-proto:windows.03.choco .
+      - docker push holochain/travis-windows-proto:windows.03.choco
 
-   - stage: docker.04
-     - script:
-       - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
-       - docker pull holochain/travis-windows-proto:windows.03.choco
-       - docker build --cache-from holochain/travis-windows-proto:windows.03.choco -f Dockerfile.04.nodist -t holochain/travis-windows-proto:windows.04.nodist .
-       - docker push holochain/travis-windows-proto:windows.04.nodist
+  - stage: docker.04
+    script:
+      - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
+      - docker pull holochain/travis-windows-proto:windows.03.choco
+      - docker build --cache-from holochain/travis-windows-proto:windows.03.choco -f Dockerfile.04.nodist -t holochain/travis-windows-proto:windows.04.nodist .
+      - docker push holochain/travis-windows-proto:windows.04.nodist
 
-   - stage: docker.end
-     - script:
-       - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
-       - docker pull holochain/travis-windows-proto:windows.04.nodist
-       - docker build  --cache-from holochain/travis-windows-proto:windows.04.nodist -f Dockerfile.zz.end -t holochain/travis-windows-proto:windows.zz.end -t holochain/travis-windows-proto:latest .
-       - docker push holochain/travis-windows-proto:windows.zz.end
-       - docker push holochain/travis-windows-proto:latest
+  - stage: docker.end
+    script:
+      - echo "$DOCKER_PASSWORD" | docker login docker.io -u $DOCKER_USER --password-stdin
+      - docker pull holochain/travis-windows-proto:windows.04.nodist
+      - docker build  --cache-from holochain/travis-windows-proto:windows.04.nodist -f Dockerfile.zz.end -t holochain/travis-windows-proto:windows.zz.end -t holochain/travis-windows-proto:latest .
+      - docker push holochain/travis-windows-proto:windows.zz.end
+      - docker push holochain/travis-windows-proto:latest
