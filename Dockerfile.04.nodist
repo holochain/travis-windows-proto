@@ -6,14 +6,13 @@ RUN choco install -y git.install nodist
 
 RUN choco install nodist
 
-RUN echo %path%
 RUN echo %NODE_PATH%
 
 RUN setx path '"%path%;C:\Program Files (x86)\Nodist\bin"'
-RUN setx NODE_PATH '"C:\Program Files (x86)\Nodist\bin\node_modules;%NODE_PATH%"'
-
 RUN echo %path%
-RUN echo %NODE_PATH%
+
+RUN nodist add 8
+RUN nodist 8
 
 RUN node --version
 RUN npm --version
